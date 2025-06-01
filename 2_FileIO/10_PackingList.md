@@ -56,6 +56,31 @@ This structure:
 - Add more items to the `data` list to expand your packing list
 - Share your file with friends so they can review it too
 
+
+```python
+import csv
+
+data = [
+  ['Item', 'Quantity'],
+  ['Mugs', 2],
+  ['Hangers', 30],
+  ['Shoes', 2]
+]
+
+try:
+  with open('packing_list.csv', 'r') as file:
+    csv_reader = csv.reader(file)
+
+    for row in csv_reader:
+      print(row)
+except FileNotFoundError:
+  print('Packing list file not found. Creating a new one.')
+  with open('packing_list.csv', 'w', newline='') as file:
+    csv_writer = csv.writer(file)
+
+    csv_writer.writerows(data)
+```
+
 You now have practical skills to manage and automate file-based tasks — from diaries to playlists to packing lists! 💪
 
 Next up: error handling and making your programs more resilient. 🚨
